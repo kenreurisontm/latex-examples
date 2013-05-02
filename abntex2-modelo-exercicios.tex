@@ -1,0 +1,142 @@
+%% abntex2-modelo-exercicios.tex
+%% Copyright 2013 A. A. Lucas
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `maintained'.
+% 
+% The Current Maintainer of this work is A. A. Lucas.
+%
+% This work consists of the files abntex2-modelo-exercicios.tex
+
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+% Modelo de Lista de Exercícios
+% * Utiliza a classe abntex2 para formatação.
+% ------------------------------------------------------------------------
+% ------------------------------------------------------------------------
+\documentclass[12pt,a4paper,oneside]{abntex2}
+
+% PACOTES
+
+% Pacotes fundamentais 
+\usepackage{cmap}	% Mapear caracteres especiais no PDF
+\usepackage{lmodern}	% Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}	% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}	% Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage}	% Usado pela Ficha catalográfica
+\usepackage{indentfirst}	% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}	% Controle das cores
+\usepackage{graphicx}	% Inclusão de gráficos
+\usepackage{amsmath}	% Pacote para equações multi linhas
+
+% Pacotes adicionais
+\usepackage{lipsum}	% para geração de dummy text
+
+% Comandos adicionais
+\providecommand{\imprimirdisciplina}{}
+\newcommand{\disciplina}[1]{\renewcommand{\imprimirdisciplina}{#1}}
+
+% Informações do aluno e documento
+\titulo{Lista de Exercícios}
+\autor{Nome do aluno}
+\disciplina{Nome da disciplina}
+\data{2013}
+\orientador{Nome do professor}
+
+% Configurações de aparência do PDF final
+\definecolor{blue}{RGB}{41,5,195} % alterando o aspecto da cor azul
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\@title},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{lista de exercícios}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=blue,          	% color of internal links
+    	citecolor=blue,        		% color of links to bibliography
+    	filecolor=magenta,      		% color of file links
+		urlcolor=blue,
+		bookmarksdepth=4
+}
+\makeatother
+
+\setlength{\parindent}{0cm} % Remove indentação dos parágrafos
+\setlength{\parskip}{0.5cm} % Espaçamento entre parágrafos
+
+% Novo estilo de cabeçalho com a identificação do aluno
+\makepagestyle{cabidaluno}
+	% Cabeçalhos
+	\makeoddhead{cabidaluno}
+		{\imprimirautor}{\imprimirtitulo}{\thepage}
+	\makeevenhead{cabidaluno}
+		{\imprimirautor}{\imprimirtitulo}{\thepage}
+	\makeheadrule{cabidaluno}{\textwidth}{\normalrulethickness} % linha separadora
+	% Rodapé
+	\makeoddfoot{cabidaluno}
+		{\imprimirorientador\ - \imprimirdisciplina, \imprimirdata}{}{}
+	\makeevenfoot{cabidaluno}
+		{\imprimirorientador\ - \imprimirdisciplina, \imprimirdata}{}{}
+
+
+% INICIO DO DOCUMENTO
+
+\begin{document}
+	
+	% Elementos textuais
+	\textual
+	\pagestyle{cabidaluno} % Inclusão de cabeçalhos e rodapés personalizados
+	
+1) Dessa maneira, responda os exercícios da lista sem preocupações com formatação ou outras distrações que tomam seu precioso tempo.
+
+2) Você pode inserir tabelas caso seja necessário, como a tabela \ref{tab:exemplo}.
+
+\begin{table}[htb]
+	\center
+	\begin{tabular}{|l|c|c|}
+		\hline
+		\textbf{Marca} & \textbf{Satisfeitos} & \textbf{Insatisfeitos} \\ \hline
+		A & $74,71\%$ & $12,36\%$ \\ \hline
+		B & $79,72\%$ & $11,75\%$ \\ \hline
+		C & $23,75\%$ & $61,88\%$ \\ \hline
+		D & $12,16\%$ & $75,68\%$ \\ \hline
+	\end{tabular}
+	\caption{Tabela exemplo.}
+	\label{tab:exemplo}
+\end{table}
+
+3) Insira equações simples:
+\[
+	P(E|Erro) = \frac{P(E \cap Erro)}{P(Erro)}
+\]
+
+E até outras mais complexas com alinhamento em colunas e quebras de linha:
+% Equação com várias linhas
+\begin{align*}
+	\begin{split}
+		P(Erro) &= P[(A \cap Erro) \cup (B \cap Erro) \cup (C \cap Erro) \cup (D \cap Erro) \cup (E \cap Erro)] \\
+		& = P(A \cap Erro) + P(B \cap Erro) + P(C \cap Erro) + P(D \cap Erro) + P(E \cap Erro) \\
+		& = P(A) \cdot P(Erro|A) + P(B) \cdot P(Erro|B) + P(C) \cdot P(Erro|C) + \\
+		& P(D) \cdot P(Erro|D) + P(E) \cdot P(Erro|E)		
+	\end{split}
+\end{align*}
+
+4) Aproveite as funcionalidades do \LaTeX, organize suas ideias em listas.
+\begin{itemize}
+	\item Ideia 1
+	\item Ideia 2
+\end{itemize}
+
+5) Faça como quiser, o \LaTeX formata para você.
+
+\end{document}
