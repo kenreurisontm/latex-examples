@@ -10,7 +10,7 @@
 % version 2005/12/01 or later.
 %
 % This work has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this work is A. A. Lucas.
 %
 % This work consists of the files abntex2-modelo-exercicios.tex
@@ -25,9 +25,9 @@
 
 % PACOTES
 
-% Pacotes fundamentais 
+% Pacotes fundamentais
 \usepackage{cmap}	% Mapear caracteres especiais no PDF
-\usepackage{lmodern}	% Usa a fonte Latin Modern			
+\usepackage{lmodern}	% Usa a fonte Latin Modern
 \usepackage[T1]{fontenc}	% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}	% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}	% Usado pela Ficha catalográfica
@@ -35,6 +35,24 @@
 \usepackage{color}	% Controle das cores
 \usepackage{graphicx}	% Inclusão de gráficos
 \usepackage{amsmath}	% Pacote para equações multi linhas
+
+\usepackage{listings} % Inserção de código fonte
+
+% Configurações do pacote 'listings'
+\lstset{
+	showspaces = false, % Marcar espaços
+	showstringspaces = false, % Marcar os espaços nas strings
+	showtabs = false, % Marcar tabs
+	numbers = left, % Posição dos números de linha (Remova para eles desaparecerem)
+	tabsize = 2, % Número de espaços por tab
+	mathescape = true % Permite o ambiente de equações
+}
+% --------------------------------
+% Para mais configurações do listings visite a página da wiki em
+% http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+% ou a documentação mais detalhada do pacote em
+% ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+% --------------------------------
 
 % Pacotes adicionais
 \usepackage{lipsum}	% para geração de dummy text
@@ -57,11 +75,11 @@
 \makeatletter
 \hypersetup{
      	%pagebackref=true,
-		pdftitle={\@title}, 
+		pdftitle={\@title},
 		pdfauthor={\@author},
     	pdfsubject={\@title},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{lista de exercícios}, 
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{lista de exercícios},
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -92,11 +110,11 @@
 % INICIO DO DOCUMENTO
 
 \begin{document}
-	
+
 	% Elementos textuais
 	\textual
 	\pagestyle{cabidaluno} % Inclusão de cabeçalhos e rodapés personalizados
-	
+
 1) Dessa maneira, responda os exercícios da lista sem preocupações com formatação ou outras distrações que tomam seu precioso tempo.
 
 2) Você pode inserir tabelas caso seja necessário, como a tabela \ref{tab:exemplo}.
@@ -127,7 +145,7 @@ E até outras mais complexas com alinhamento em colunas e quebras de linha:
 		P(Erro) &= P[(A \cap Erro) \cup (B \cap Erro) \cup (C \cap Erro) \cup (D \cap Erro) \cup (E \cap Erro)] \\
 		& = P(A \cap Erro) + P(B \cap Erro) + P(C \cap Erro) + P(D \cap Erro) + P(E \cap Erro) \\
 		& = P(A) \cdot P(Erro|A) + P(B) \cdot P(Erro|B) + P(C) \cdot P(Erro|C) + \\
-		& P(D) \cdot P(Erro|D) + P(E) \cdot P(Erro|E)		
+		& P(D) \cdot P(Erro|D) + P(E) \cdot P(Erro|E)
 	\end{split}
 \end{align*}
 
@@ -137,6 +155,18 @@ E até outras mais complexas com alinhamento em colunas e quebras de linha:
 	\item Ideia 2
 \end{itemize}
 
-5) Faça como quiser, o \LaTeX formata para você.
+5.a) Insira algoritmos diretamente em seu documento:
+\begin{lstlisting}[language = Ruby, caption = Algoritmo inline]
+def this_is_amazing?
+	1000.times do
+		puts 'Yes!'
+	end
+end
+\end{lstlisting}
+
+5.b) Ou utilize algoritmos em arquivos separados (que é muito melhor!), podendo escolher quais as linhas inicial e final, mostrando apenas uma parte do arquivo:
+\lstinputlisting[language = Ruby, firstline = 2, lastline = 6, caption = Algoritmo em arquivo separado]{./code/awesomeness.rb}
+
+6) Faça como quiser, o \LaTeX formata para você.
 
 \end{document}
